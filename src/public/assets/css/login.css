@@ -1,0 +1,36 @@
+.signIn-form {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: var(--form-background);
+    border-radius: 8px;
+}
+
+.signIn-form h1 {
+    text-align: center;
+}
+
+.signIn-form input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signIn-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.150s;
+}
+
+.signIn-form button:hover {
+    background-color: var(--button-hover-color);
+}

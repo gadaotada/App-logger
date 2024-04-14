@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choco Logs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <% if (!notFound) { %>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <script src="/assets/js/main.js"></script>
+        <% if (!isLoggedIn) { %>
+            <link rel="stylesheet" href="/assets/css/login.css">
+        <% } else { %>
+            <link rel="stylesheet" href="/assets/css/admin.css">
+        <% } %>
+    <% } else {
+        // If the page is not found, we will use the following styles
+    } %>
+</head>
+<body>
+    <% if (notFound) { %>
+        <%- include('notFound') %>
+    <% } else { %>
+    <main>
+        <% if (!isLoggedIn) { %>
+            <div class="theme-switcher" onclick="toggleTheme()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-switch-icon"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </div>
+        <% } else { %>
+            <%- include('nav') %>
+        <% } %>
+        <div id="app-choco-logging">
+            <% if (!isLoggedIn) { %>
+                <form class="signIn-form" id="logginForm">
+                    <h1>Choco Logs</h1>
+                    <input id="username" type="text" name="username" placeholder="Username" required>
+                    <input id="password" type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Sign In</button>
+                </form>
+                <script src="/assets/js/login.js"></script>
+            <% } else { %>
+                <%- include(contentFile) %>
+            <% } %>
+        </div>
+    </main>
+    <% } %>
+</body>
+</html>

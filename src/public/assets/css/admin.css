@@ -1,0 +1,457 @@
+/* Navigation header styling */
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: var(--form-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-header .hero-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.hero-text a {
+    text-decoration: none;
+    color: var(--button-color);
+}
+
+.nav-header .nav-links {
+    display: flex;
+}
+
+.nav-header .nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 15px;
+    margin: 0 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.nav-header .nav-links a:hover {
+    background-color: var(--button-hover-color);
+    color: #fff;
+}
+
+.logout a {
+    padding: 8px 15px;
+    background-color: var(--button-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.logout a:hover {
+    background-color: var(--button-hover-color);
+}
+
+
+.logout {
+    margin-left: auto;
+}
+
+/* Main styles */
+.hero-container {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.hero-msg {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.hero-msg p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.hero-actions {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-actions button {
+    padding: 10px 20px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-actions button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.actions-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.actions-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-actions h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+
+.form-actions button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pr-enabled {
+    display: block;
+    color: white;
+    text-align: center;
+    width: 45px;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: rgb(199, 62, 62);
+    transition: background-color 0.3s;
+};
+
+[data-state="disabled"] {
+    background-color: rgb(199, 62, 62);
+}
+
+[data-state="enabled"] {
+    background-color: rgb(90, 199, 62)
+}
+
+.pr-name {
+    font-weight: bolder;
+    color: var(--button-color);
+    font-style: italic;
+}
+
+.pr-update {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+/* Table Styling */
+.table-container {
+    width: 90%;
+    margin: 20px auto;
+    overflow-x: auto; /* Ensures the table is scrollable on smaller screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--form-background);
+    border-radius: 8px;
+}
+
+.logs-table {
+    max-width: 100%
+}
+
+tr {
+    border: 2px solid transparent;
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-row-odd-color);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--table-row-even-color);
+}
+
+tr>td {
+    border-bottom: 1px solid var(--text-color);
+}
+
+tr > th {
+    background-color: var(--button-hover-color)
+}
+
+th:first-child {
+    border-top-left-radius: 8px;
+}
+
+th:last-child {
+    border-top-right-radius: 8px;
+}
+
+tr:last-child > td:first-child{
+    border-bottom-left-radius: 8px;
+}
+
+tr:last-child > td:last-child{
+    border-bottom-right-radius: 8px;
+}
+
+th, td {
+    text-align: left;
+    padding: 5px 15px;
+    border-bottom: 1px solid var(--text-color);
+}
+
+th {
+    background-color: var(--table-bg-color);
+    color: white;
+    font-weight: bold;
+}
+
+.th-center {
+    text-align: center;
+}
+
+/* Adjusts the hover effect to not affect the header */
+tr:first-child:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+.an-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.an-container.actions {
+    justify-content: center;
+}
+
+.an-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.an-name {
+    font-weight: bold;
+}
+
+.no-data {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.an-container.actions > button {
+    background-color: #fff;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 4px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.delete-project {
+    color: rgb(160, 14, 14);
+}
+
+.edit-project {
+    color: rgb(235, 170, 32);
+}
+
+.an-container.actions > button.delete-project:hover {
+    color: white;
+    background-color: rgb(160, 14, 14);
+}
+
+.an-container.actions > button.edit-project:hover {
+    color: white;
+    background-color: rgb(235, 170, 32);
+}
+
+/* Links within the table */
+table a {
+    padding: 6px 7px 4px 7px;
+    background-color: var(--button-color);
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+table a:hover {
+    background-color: var(--button-hover-color);
+}
+
+.err-type {
+    font-weight: bold;
+    width: 50px;
+}
+
+.err-type[data-type="Critical"] {
+    color: rgb(231, 37, 37);
+}
+
+.err-type[data-type="Warning"] {
+    color: rgb(247, 164, 10);
+}
+
+.err-type[data-type="General"] {
+    color: green;
+}
+
+.err-type[data-type="Other"] {
+    color: rgb(57, 109, 223);
+}
+
+.err-code {
+    font-weight: bold;
+    min-width: 50px;
+}
+
+.err-loc {
+    font-style: italic;
+    font-size: small;
+    min-width: 300px
+}
+
+.err-date { 
+    min-width: 120px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 1.5;
+    font-size: 0.9em;
+}
+
+.err-msg {
+    max-width: 500px;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    border: none;
+}
+
+.err-msg-cont {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.err-msg > span {
+    cursor: pointer;
+}
+
+.error-message-textarea {
+    height: 25px;
+    width: 100%;
+    resize: none;
+    border: none;
+    background-color: transparent;
+    overflow-y: auto;
+    color: var(--text-color);
+}
+
+.err-card-header {
+    background-color: var(--button-color);
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.err-card-header h3 {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.err-card-body {
+    background-color: var(--form-background);
+    padding: 15px;
+    max-width: 80vw;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-top: 1px solid var(--table-row-even-color);
+}
+
+.err-card-body p {
+    margin: 10px 0;
+}
+
+.err-card-body p strong {
+    font-weight: bold;
+}
+
+/* Styles specific for the light theme */
+[data-theme="light"] .err-card-header {
+    background-color: var(--button-color);
+}
+
+[data-theme="light"] .err-card-body {
+    background-color: var(--form-background);
+}
+
+/* Styles specific for the dark theme */
+[data-theme="dark"] .err-card-header {
+    background-color: var(--button-hover-color);
+}
+
+[data-theme="dark"] .err-card-body {
+    background-color: var(--table-row-odd-color);
+}
+
+/* Global card styles */
+.err-card {
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+
+.err-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,35 @@
+<div class="actions-overlay"></div>
+<div>
+    <h1>Project Name: <%= prlog.projectName %></h1>
+    <p>Total error logs: <%= prlog.logs.length %></p>
+    <table class="logs-table">
+        <tr>
+            <th>Type</th>
+            <th>Code</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Message</th>
+        </tr>
+        <% if (prlog.logs && prlog.logs.length > 0) { %>
+            <% prlog.logs.forEach(log => { %>
+                <tr data-id="<%= log.id %>">
+                    <td class="err-type"  data-type="<%= log.type %>"><%= log.type %></td>
+                    <td class="err-code"><%= log.code %></td>
+                    <td class="err-loc"><%= log.location %></td>
+                    <td class="err-date">
+                        <span><%= log.timestamp.split(',')[0] %></span>
+                    </td>
+                    <td class="err-date"><span><%= log.timestamp.split(',')[1] %></span></td>
+                    <td class="err-msg"><!-- <textarea class="error-message-textarea" readonly> --><span class="err-msg-cont"><%= log.message %></span><!-- </textarea> --><span onclick="toggleOverlay('<%= log.id %>')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-search"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/></svg></span></td>
+                </tr>
+            <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="5" class="no-data">No logs found</td>
+            </tr>
+        <% } %>
+    </table>
+
+</div>
+<script src="/assets/js/projectId.js"></script>
