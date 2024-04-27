@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "dashboard": "ts-node src/server.ts",
     "logger": "ts-node src/logger.ts",
     "generate-faker-errors": "ts-node src/utils/faker-errs.ts",
     "build": "tsc",
