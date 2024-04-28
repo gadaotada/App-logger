@@ -58,12 +58,32 @@ app.get('/admin/projects/:id', authMiddleware, async (req, res) => {
     res.render('index', { notFound: true });
     return;
   }
-  const prlog = await getProjectLogs(prId);
+
+  let page = parseInt(req.query.page as string) || 1
+  const pageSize = 15;
+  const offset = (page - 1) * pageSize;
+
+  const searchQuery = req.query.searchQuery as string || "";
+  const type = req.query.type as string || "";
+  const startDate = req.query.startDate as string || "";
+  const endDate = req.query.endDate as string || "";
+
+  const prlog = await getProjectLogs(prId, offset, pageSize, searchQuery, type, startDate, endDate);
   if (prlog === null) {
     res.render('index', { notFound: true });
     return;
   }
-  res.render('index', { isLoggedIn: true, contentFile: 'partials/projectId', projectId: prId, prlog: prlog});
+
+  const pagination = {
+    page: page,
+    pageSize: pageSize,
+    searchQuery: searchQuery,
+    type: type,
+    startDate: startDate,
+    endDate: endDate
+  }
+
+  res.render('index', { isLoggedIn: true, contentFile: 'partials/projectId', projectId: prId, prlog: prlog, pagination: pagination});
 });
 
 // API SECTION
@@ -86,6 +106,7 @@ app.get('/api/admin/projects/:id', authMiddleware, async (req, res) => {
     res.status(400).json()
     return;
   }
+
   const project = await getProject(id);
   res.status(200).json({ project: project });
 });

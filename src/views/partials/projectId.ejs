@@ -1,7 +1,21 @@
 <div class="actions-overlay"></div>
 <div>
     <h1>Project Name: <%= prlog.projectName %></h1>
-    <p>Total error logs: <%= prlog.logs.length %></p>
+    <p>Total error logs: <%= prlog.total %></p>
+    <div id="projectIdContainer" data-projectid="<%= projectId %>"></div>
+        <input type="text" />
+        <button>Search</button>
+        <select>
+            <option value="" disabled selected>Pick a Type</option>
+            <option value="Critical">Critical</option>
+            <option value="Warning">Warning</option>
+            <option value="General">General</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="datetime-local" />
+        <input type="datetime-local" />
+        <button>Reset filters</button>
+    </div>
     <table class="logs-table">
         <tr>
             <th>Type</th>
@@ -21,15 +35,30 @@
                         <span><%= log.timestamp.split(',')[0] %></span>
                     </td>
                     <td class="err-date"><span><%= log.timestamp.split(',')[1] %></span></td>
-                    <td class="err-msg"><!-- <textarea class="error-message-textarea" readonly> --><span class="err-msg-cont"><%= log.message %></span><!-- </textarea> --><span onclick="toggleOverlay('<%= log.id %>')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-search"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/></svg></span></td>
+                    <td class="err-msg">
+                        <span class="err-msg-cont"><%= log.message %></span>
+                        <span onclick="toggleOverlay('<%= log.id %>')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scan-search"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/>
+                            </svg>
+                        </span>
+                    </td>
                 </tr>
             <% }) %>
         <% } else { %>
             <tr>
-                <td colspan="5" class="no-data">No logs found</td>
+                <td colspan="6" class="no-data">No logs found</td>
             </tr>
         <% } %>
     </table>
-
+    <!-- Pagination -->
+        <div class="pagination">
+            <% if (prlog.total > pagination.pageSize) { %>
+                <div class="pagination">
+                    <% for (let i = 1; i <= Math.ceil(prlog.total / pagination.pageSize); i++) { %>
+                        <a <% if (i === pagination.page) { %>class="currPage"<% } %> href="/admin/projects/<%= projectId %>?page=<%= i %>&searchQuery=<%= pagination.searchQuery %>&type=<%= pagination.type %>&startDate=<%= pagination.startDate %>&endDate=<%= pagination.endDate %>"><%= i %></a>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
 </div>
 <script src="/assets/js/projectId.js"></script>

@@ -29,4 +29,5 @@ export type PrLog = {
         location: string;
     }[];
     projectName: string;
+    total: number
 }

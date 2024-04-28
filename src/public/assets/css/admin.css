@@ -445,7 +445,6 @@ table a:hover {
     background-color: var(--table-row-odd-color);
 }
 
-/* Global card styles */
 .err-card {
     margin: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -454,4 +453,17 @@ table a:hover {
 
 .err-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination > a {
+    text-decoration: none;
+    color: var(--button-hover-color)
+}
+
+.currPage {
+    font-weight: bolder;
 }

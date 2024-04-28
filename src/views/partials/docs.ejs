@@ -1,23 +1,66 @@
 <div>
-    <h1>Documentation</h1>
-    <p>Here you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
-    <p>It has a simple admin console where you can add, remove, or update projects.</p>
-    <p>It also has a simple documentation page where you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
-    <p>It has a simple admin console where you can add, remove, or update projects.</p>
-    <p>It also has a simple documentation page where you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
-    <p>It has a simple admin console where you can add, remove, or update projects.</p>
-    <p>It also has a simple documentation page where you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
-    <p>It has a simple admin console where you can add, remove, or update projects.</p>
-    <p>It also has a simple documentation page where you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
-    <p>It has a simple admin console where you can add, remove, or update projects.</p>
-    <p>It also has a simple documentation page where you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
-    <p>It has a simple admin console where you can add, remove, or update projects.</p>
-    <p>It also has a simple documentation page where you can find the documentation for this project.</p>
-    <p>It is a simple project that uses Node.js, Express, and EJS to create a simple web application.</p>
+    <h1>Logger Usage</h1>
+    <p>Hook up your app after you create it in the admin panel and get your API KEY and PROJECT NAME</p>
+    <p style="text-decoration: underline;">Example Usage for error logging:</p>
+    <code>
+        const loggerURL = process.env.LOGGER_URL || "https://yourlogerdomain.com/log-errors/"
+        <br/>
+        const apiKey = process.env.LOGGER_API_KEY || "your-app-api-key"
+        <br/>
+        const projectName = "My new project/app"
+        <br/>
+        let type = "Critical" | "Warning" | "General" | "Other"
+        <br/>
+        <br/>
+        export async function errorLog(type: string, code: number, location: string, message: string) {
+            <br/>
+            &#160;&#160;&#160;&#160;const payload = {
+                type: type,
+                code: code,
+                location: location,
+                message: message
+            }
+            <br/>
+            &#160;&#160;&#160;&#160;try {
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;const res = await fetch(`${loggerURL}`, {
+                    <br/>
+                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;method: "POST",
+                    <br/>
+                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;headers: {
+                        <br/>
+                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'Content-Type': 'application/json',
+                        <br/>
+                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'chocolog-api-key': apiKey,
+                        <br/>
+                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;'chocolog-api-name': projectName
+                        <br/>
+                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;},
+                    <br/>
+                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;body: JSON.stringify(payload)
+                    <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;});
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// if you care about if it was a success the endpoint returns 404 when projectName or apiKey are not provided
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// 401 if the apiKey or projectName are not the same as the logger expects(falsy key/name)
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// 400 if type, code, location or message are missing
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// 200 if everything is okay
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// const result = await res.json()
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// handle stuff here if u need
+                <br/>
+            &#160;&#160;&#160;&#160;} catch (err) {
+                <br/>
+                &#160;&#160;&#160;&#160;&#160;&#160;// If u care about it... handle it here
+                <br/>
+            &#160;&#160;&#160;&#160;} // finally {} etc
+            <br/>
+        }
+    </code>
+    <p style="text-decoration: underline;">Example usage for Logger stats:</p>
+    <code>TODO: ....</code>
 </div>

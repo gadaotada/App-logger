@@ -26,7 +26,7 @@ async function authLoggerMiddleware(req: Request, res: Response, next: NextFunct
     const apiName = req.headers['chocolog-api-name'];
 
     if (!apiKey || !apiName) {
-        res.status(401).json({ error: 'No API Key provided' });
+        res.status(404).json({ error: 'Bad key' });
         return;
     }
 
@@ -45,7 +45,7 @@ logger.post('/log-errors', authLoggerMiddleware, async (req, res) => {
         res.status(400).json();
         return;
     }
-
+    
     await logError(appName, type, code, location, message);
     res.status(200).json();
 });

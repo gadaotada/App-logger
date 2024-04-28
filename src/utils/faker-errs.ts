@@ -8,7 +8,7 @@ function generateLog() {
     let maxMsgPicked = faker.number.int({ min: 50, max: 1000 });
     let code;
     
-    const project_id = 42; // Hardcoded project ID provide your own if needed
+    const project_id = 43; // Hardcoded project ID provide your own if needed
     const type = ['Critical', 'General', 'Warning', 'Other'][arrIndex];
     
     switch (type) {
