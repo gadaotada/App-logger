@@ -9,7 +9,7 @@
     "generate-faker-errors": "ts-node src/utils/faker-errs.ts",
     "build": "tsc",
     "serve": "node dist/server.js",
-    "start": "npm run build && concurrently \"npm run dashboard\" \"npm run logger\""
+    "start": "npm run build && \"npm run dashboard\" && \"npm run logger\""
   },
   "keywords": [],
   "author": "",
