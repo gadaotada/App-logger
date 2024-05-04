@@ -3,9 +3,8 @@ import { createServer } from 'http';
 import cors from 'cors';
 import { loadApiKeys, logError, logStats } from './database/logger/data-logger';
 
-
 let apiKeys: any[] = [];
-const port = 8812;
+const port = 80;
 const logger = express();
 
 logger.use(express.json());

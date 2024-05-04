@@ -10,7 +10,7 @@ import { updateProject } from './database/data-update';
 import { deleteProject } from './database/data-delete';
 import { authMiddleware, loginUser, logoutUser, checkLogin } from './auth/auth';
 
-const port = 8811;
+const port = 81;
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 
