@@ -7,7 +7,7 @@
     "dashboard": "node dist/server.js",
     "logger": "node dist/logger.js",
     "generate-faker-errors": "ts-node src/utils/faker-errs.ts",
-    "build": "tsc",
+    "build": "tsc && copyfiles -u 1 src/public/**/* src/views/**/* dist",
     "serve": "node dist/server.js",
     "start": "npm run build && concurrently \"npm run dashboard\" \"npm run logger\""
   },
@@ -21,6 +21,7 @@
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/nodemailer": "^6.4.15",
+    "copyfiles": "^2.4.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
