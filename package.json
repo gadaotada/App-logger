@@ -4,12 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dashboard": "ts-node src/server.ts",
-    "logger": "ts-node src/logger.ts",
+    "dashboard": "node dist/server.js",
+    "logger": "node dist/logger.js",
     "generate-faker-errors": "ts-node src/utils/faker-errs.ts",
     "build": "tsc",
     "serve": "node dist/server.js",
-    "start": "npm run build && \"npm run dashboard\" && \"npm run logger\""
+    "start": "npm run build && concurrently \"npm run dashboard\" \"npm run logger\""
   },
   "keywords": [],
   "author": "",
