@@ -1,4 +1,6 @@
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
+import { escape } from 'mysql2';
+
 import { poolConn } from '../conn';
 
 export async function loadApiKeys () {
@@ -20,12 +22,19 @@ export async function logError (appName: string, type: 'Critical'| 'General'| 'W
     return false;
   }
   try {
-    const query = `
-      SET @project_id = (SELECT id FROM projects WHERE name = ?);
-      INSERT INTO errors (project_id, type, code, location, message) VALUES (@project_id, ?, ?, ?, ?);
-    `
 
-    const [rows] = await pool.query<ResultSetHeader>(query, [appName, type, code, location, message]);
+    let EappName = escape(appName);
+    let Etype = escape(type);
+    let Ecode = escape(code);
+    let Elocation = escape(location);
+    let Emessage = escape(message);
+
+    const query = `
+      SET @project_id = (SELECT id FROM projects WHERE name = ${EappName});
+      INSERT INTO errors (project_id, type, code, location, message) VALUES (@project_id, ${Etype}, ${Ecode}, ${Elocation}, ${Emessage});
+    `;
+
+    const [rows] = await pool.query<ResultSetHeader>(query);
 
     return rows.affectedRows > 0;
   } 
